@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = "$AWS_REGION"
         S3_BUCKET = "$S3_BUCKET"
-        S3_PREFIX = "$S3_PREFIX"
+        ` = "$S3_PREFIX"
     }
 
     stages {
@@ -12,13 +12,13 @@ pipeline {
         stage('Checkout Training Code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Pranav-Thorve/AI-Car-ChatBot-CICD.git'
-                dir('training') { echo "Training directory loaded" }
+                dir('model') { echo "Training directory loaded" }
             }
         }
 
         stage('Install Training Deps') {
             steps {
-                dir('training') {
+                dir('model') {
                     sh 'pip install -r requirements.txt'
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
 
         stage('Train Model') {
             steps {
-                dir('training') {
+                dir('model') {
                     sh 'python train.py'
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
 
         stage('Upload Weights to S3') {
             steps {
-                    dir('training/weights') {
+                    dir('model/weights') {
                         sh """
                         aws s3 sync . s3://${S3_BUCKET}/${S3_PREFIX}/
                         """

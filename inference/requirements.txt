@@ -1,0 +1,7 @@
+transformers>=4.35.0
+safetensors
+torch
+fastapi
+uvicorn
+boto3
+

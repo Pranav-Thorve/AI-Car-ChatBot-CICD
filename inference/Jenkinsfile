@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION = "$AWS_REGION"
+        ECR_REPO = "$ECR_REPO"
+        IMAGE_TAG = "latest"
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Pranav-Thorve/AI-Car-ChatBot-CICD.git'
+                dir('inference') { echo "Inference directory loaded" }
+            }
+        }
+
+        stage('Build Inference Docker Image') {
+            steps {
+                dir('inference') {
+                    sh """
+                    docker build -t ${ECR_REPO}:${IMAGE_TAG} .
+                    """
+                }
+            }
+        }
+
+        stage('Login to ECR') {
+            steps {
+                    sh """
+                    aws ecr get-login-password --region ${AWS_REGION} | \
+                    docker login --username AWS --password-stdin ${ECR_REPO}
+                    """
+            }
+        }
+
+        stage('Push to ECR') {
+            steps {
+                sh """
+                docker push ${ECR_REPO}:${IMAGE_TAG}
+                """
+            }
+        }
+
+    }
+}

@@ -1,0 +1,126 @@
+Car: Audi
+Audi is a German luxury automaker known for quattro all-wheel drive, advanced technology, sharp design, and performance models like the R8 and RS6.
+
+Car: Audi R8
+The Audi R8 is a mid-engine performance car combining a V10 engine with quattro traction and daily comfort.
+
+Car: Audi R8 V10
+The Audi R8 V10 is a naturally aspirated V10 supercar known for its high-revving sound, Lamborghini-shared engine, sharp handling, and everyday usability.
+
+Car: R8 V10
+The R8 V10 is Audi’s flagship supercar featuring a naturally aspirated 5.2-liter V10 engine and iconic styling.
+
+Car: R8
+The R8 is Audi’s performance halo car, offering exotic-car performance with German refinement.
+
+Car: Tell me about Audi R8 V10
+The Audi R8 V10 is a naturally aspirated supercar with a 5.2-liter V10 engine and quattro all-wheel drive.
+
+Car: Describe Audi R8 V10
+The Audi R8 V10 features a Lamborghini-shared V10, sharp design, and everyday comfort.
+
+Car: Give details of Audi R8 V10
+The Audi R8 V10 is known for its V10 engine, dual-clutch gearbox, quattro traction, and daily drivability.
+
+Car: Lamborghini
+Lamborghini is an Italian supercar manufacturer known for dramatic styling, V10 and V12 engines, and extreme performance.
+
+Car: Lamborghini Aventador
+The Lamborghini Aventador is a V12 Italian supercar with aggressive styling and scissor doors.
+
+Car: Aventador
+The Aventador is Lamborghini’s flagship V12 model focused on extreme acceleration and design.
+
+Car: Tell me about Aventador
+The Aventador is a V12 supercar known for dramatic styling and performance.
+
+Car: Describe Aventador
+The Aventador is a high-performance V12 Lamborghini with iconic scissor doors.
+
+Car: Lamborghini Huracán
+The Lamborghini Huracán is a V10 supercar combining sharp looks, reliability, and extreme performance.
+
+Car: Huracán
+The Huracán is a V10 Lamborghini known for agility, sound, and precision.
+
+Car: Ferrari
+Ferrari is an Italian manufacturer known for racing heritage, V8 and V12 engines, and high-performance design.
+
+Car: Ferrari 488
+The Ferrari 488 is a twin-turbo V8 supercar with sharp aerodynamics and extreme speed.
+
+Car: 488
+The 488 is a Ferrari V8 supercar known for precision handling and turbocharged performance.
+
+Car: Tell me about Ferrari 488
+The Ferrari 488 features a twin-turbo V8 engine with exceptional handling.
+
+Car: Describe Ferrari 488
+The Ferrari 488 is a V8 supercar offering speed, aerodynamics, and control.
+
+Car: Bugatti
+Bugatti produces hypercars focused on extreme power, luxury, and top speed.
+
+Car: Bugatti Chiron
+The Bugatti Chiron is a 1500-horsepower hypercar known for luxury and world-class engineering.
+
+Car: Chiron
+The Chiron is Bugatti’s hypercar featuring extreme speed and stunning craftsmanship.
+
+Car: Porsche
+Porsche is a German brand known for precision engineering and everyday performance.
+
+Car: Porsche 911 Turbo S
+The Porsche 911 Turbo S is a twin-turbo flat-six supercar with incredible grip and acceleration.
+
+Car: 911 Turbo S
+The 911 Turbo S is a high-performance Porsche known for speed and everyday usability.
+
+Car: McLaren
+McLaren produces lightweight, aerodynamic supercars focused on driving purity.
+
+Car: McLaren 720S
+The McLaren 720S is a lightweight supercar powered by a twin-turbo V8 and advanced aerodynamics.
+
+Car: 720S
+The 720S is McLaren’s ultra-light twin-turbo V8 supercar focused on agility.
+
+Car: Nissan GT-R
+The Nissan GT-R is a twin-turbo V6 supercar known as “Godzilla” for its acceleration and all-wheel-drive grip.
+
+Car: GT-R
+The GT-R is a performance icon known for technology and speed.
+
+Car: Mercedes AMG GT
+The AMG GT is a front-engine sports car with a handcrafted V8 and luxury performance.
+
+Car: AMG GT
+The AMG GT combines luxury with track-focused capability.
+
+Car: BMW M4
+The BMW M4 is a high-performance coupe with a twin-turbo inline-six and sharp handling.
+
+Car: M4
+The M4 is BMW’s performance coupe balancing daily usability and speed.
+
+Car: Aston Martin DB11
+The DB11 is a luxury grand-tourer known for elegance and powerful V8 or V12 engines.
+
+Car: DB11
+The DB11 offers luxury design and grand-touring comfort with strong performance.
+
+Car: Ask about Audi R8
+The Audi R8 is a mid-engine supercar offering V10 power and everyday comfort.
+
+Car: Ask about Aventador
+The Aventador is Lamborghini’s V12 performance flagship with dramatic styling.
+
+Car: Ask about Ferrari 488
+The Ferrari 488 is a V8 supercar focused on precision and turbocharged power.
+
+Car: Ask about 720S
+The McLaren 720S is a lightweight supercar designed for agility and speed.
+
+Car: Ask about Chiron
+The Bugatti Chiron is a hypercar featuring extreme horsepower and luxury.
+

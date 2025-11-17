@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION = "$AWS_REGION"
+        S3_BUCKET = "$S3_BUCKET"
+        S3_PREFIX = "$S3_PREFIX"
+    }
+
+    stages {
+
+        stage('Checkout Training Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Pranav-Thorve/AI-Car-ChatBot-CICD.git'
+                dir('training') { echo "Training directory loaded" }
+            }
+        }
+
+        stage('Install Training Deps') {
+            steps {
+                dir('training') {
+                    sh 'pip install -r requirements.txt'
+                }
+            }
+        }
+
+        stage('Train Model') {
+            steps {
+                dir('training') {
+                    sh 'python train.py'
+                }
+            }
+        }
+
+        stage('Upload Weights to S3') {
+            steps {
+                    dir('training/weights') {
+                        sh """
+                        aws s3 sync . s3://${S3_BUCKET}/${S3_PREFIX}/
+                        """
+                    }
+            }
+        }
+    }
+}
+

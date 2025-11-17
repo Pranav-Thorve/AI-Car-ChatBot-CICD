@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = "$AWS_REGION"
         S3_BUCKET = "$S3_BUCKET"
-        ` = "$S3_PREFIX"
+        S3_PREFIX = "$S3_PREFIX"
     }
 
     stages {

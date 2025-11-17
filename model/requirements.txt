@@ -4,3 +4,4 @@ safetensors
 fastapi
 uvicorn
 datasets
+accelerate>=0.26.0

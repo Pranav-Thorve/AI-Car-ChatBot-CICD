@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = "$AWS_REGION"
         ECR_REPO = "$ECR_REPO"
-        IMAGE_TAG = "latest""
+        IMAGE_TAG = "latest"
     }
 
     stages {

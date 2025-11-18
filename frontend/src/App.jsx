@@ -5,7 +5,7 @@ export default function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
-  const API_URL = "http://host.docker.internal:9000/infer";
+  const API_URL = "http://backend:9000/infer";
 
   const sendMessage = async () => {
     if (!input.trim()) return;

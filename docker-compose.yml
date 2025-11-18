@@ -3,7 +3,7 @@ version: "3.9"
 services:
   backend:
     container_name: backend
-    image: backend:latest
+    image: 676673798495.dkr.ecr.us-east-1.amazonaws.com/carbotai:latest
     build:
       context: ./inference
     ports:
@@ -13,7 +13,7 @@ services:
 
   frontend:
     container_name: frontend
-    image: frontend:latest
+    image: 676673798495.dkr.ecr.us-east-1.amazonaws.com/carbot-frontend:latest
     build:
       context: ./frontend  
     ports:

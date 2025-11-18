@@ -1,43 +1,92 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
 import os
 import logging
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from model import CarBotModel
 
+# ------------------------------------------------------------
+# Logging
+# ------------------------------------------------------------
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("model_server")
 
-app = FastAPI(title="CarBot Model Service")
+# ------------------------------------------------------------
+# FastAPI App
+# ------------------------------------------------------------
+app = FastAPI(title="CarBot Model Service", version="1.0")
 
+# ------------------------------------------------------------
+# CORS (IMPORTANT for frontend)
+# ------------------------------------------------------------
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],     # allow all origins (frontend, local dev, etc.)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ------------------------------------------------------------
+# Request Body
+# ------------------------------------------------------------
 class Query(BaseModel):
     question: str
 
+# ------------------------------------------------------------
+# Global model object
+# ------------------------------------------------------------
+MODEL_DIR = os.getenv("MODEL_LOCAL_DIR", "/app/weights")
+MODEL = None
+
+
+# ------------------------------------------------------------
+# Load model at startup
+# ------------------------------------------------------------
 @app.on_event("startup")
 def load_model():
     global MODEL
-    model_dir = os.getenv("MODEL_LOCAL_DIR", "/app/weights")
 
-    if not os.path.isdir(model_dir):
-        logger.error("Model directory does not exist: %s", model_dir)
+    logger.info("Starting CarBot Model Server...")
+    logger.info(f"Loading weights from: {MODEL_DIR}")
+
+    if not os.path.exists(MODEL_DIR):
+        logger.error(f"MODEL DIRECTORY NOT FOUND → {MODEL_DIR}")
         return
 
-    logger.info("Loading model from %s", model_dir)
-    MODEL = CarBotModel(model_dir)
-    logger.info("Model loaded successfully")
+    try:
+        MODEL = CarBotModel(MODEL_DIR)
+        logger.info("Model loaded successfully 🚗🔥")
+    except Exception as e:
+        logger.error(f"Failed to load model: {e}")
+        MODEL = None
 
+
+# ------------------------------------------------------------
+# Health endpoint
+# ------------------------------------------------------------
 @app.get("/health")
 def health():
-    return {"ready": "MODEL" in globals()}
+    return {"ready": MODEL is not None}
 
+
+# ------------------------------------------------------------
+# Inference endpoint
+# ------------------------------------------------------------
 @app.post("/infer")
-def infer(q: Query):
-    if "MODEL" not in globals():
+def infer(query: Query):
+    global MODEL
+
+    if MODEL is None:
+        logger.error("Inference request received but model not loaded")
         return {"answer": "Model not ready"}
 
-    answer = MODEL.generate(q.question)
-
-    if len(answer.strip()) < 5 or answer.lower().startswith("tell me"):
-        return {"answer": "I don't know about this car."}
-
-    return {"answer": answer}
+    try:
+        logger.info(f"Received question: {query.question}")
+        answer = MODEL.generate(query.question)
+        logger.info(f"Answer: {answer}")
+        return {"answer": answer}
+    except Exception as e:
+        logger.error(f"Inference failed: {e}")
+        return {"answer": "Error during inference"}
 

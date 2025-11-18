@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  backend:
+    container_name: backend
+    image: backend:latest
+    build:
+      context: ./inference
+    ports:
+      - "9000:9000"
+    networks:
+      - carbot-net
+
+  frontend:
+    container_name: frontend
+    image: frontend:latest
+    build:
+      context: ./frontend  
+    ports:
+      - "3000:80"
+    environment:
+      - API_URL=http://<Server-IP>:9000/infer
+    depends_on:
+      - backend
+    networks:
+      - carbot-net
+
+networks:
+  carbot-net:
+    driver: bridge
+
